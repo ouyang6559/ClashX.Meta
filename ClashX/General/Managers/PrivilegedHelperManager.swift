@@ -30,7 +30,15 @@ class PrivilegedHelperManager {
 
     func checkInstall() {
         Logger.log("checkInstall", level: .debug)
-        
+
+        // Dev escape hatch: run without the privileged helper (same state as
+        // pressing Cancel on the install alert).
+        if UserDefaults.standard.bool(forKey: "kDevSkipHelperInstall") {
+            Logger.log("dev mode: skip helper install check", level: .debug)
+            isHelperCheckFinished.accept(true)
+            return
+        }
+
         getHelperStatus { [weak self] installed in
             guard let self = self else {return}
             if !installed {
