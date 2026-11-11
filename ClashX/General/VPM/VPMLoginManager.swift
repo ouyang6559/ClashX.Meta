@@ -42,6 +42,10 @@ class VPMLoginManager {
 
     @objc private func loginStateChanged() {
         windowController?.reloadContent()
+        if VPMAPIClient.isLoggedIn {
+            // 登录成功：自动注册设备并导入 Clash 订阅。
+            VPMDeviceService.shared.ensureSubscriptionAfterLogin()
+        }
     }
 
     @objc private func sessionExpired() {
