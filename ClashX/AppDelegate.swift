@@ -496,6 +496,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AutoUpgardeManager.shared.addChanelMenuItem(&experimentalMenu)
         updateExperimentalFeatureStatus()
         RemoteControlManager.setupMenuItem(separator: externalControlSeparator)
+        VPMLoginManager.shared.setupMenuItem(separator: externalControlSeparator)
     }
 
     func updateExperimentalFeatureStatus() {
@@ -882,6 +883,7 @@ extension AppDelegate: NSMenuDelegate {
         MenuItemFactory.refreshExistingMenuItems()
         updateConfigFiles()
         syncConfig()
+        VPMLoginManager.shared.refreshVisibility()
         NotificationCenter.default.post(name: .proxyMeneViewShowLeftPadding,
                                         object: nil,
                                         userInfo: ["show": hasMenuSelected()])

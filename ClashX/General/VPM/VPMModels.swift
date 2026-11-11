@@ -32,6 +32,10 @@ struct VPMRequestResetResponse: Decodable {
     let devCode: String?
 }
 
+struct VPMResetPasswordResponse: Decodable {
+    let ok: Bool?
+}
+
 // MARK: - OAuth / Telegram
 
 struct VPMOAuthProvider: Decodable {

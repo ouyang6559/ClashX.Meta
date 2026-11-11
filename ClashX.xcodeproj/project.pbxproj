@@ -21,6 +21,10 @@ B426215BB40D458FB18365F6 /* VPMKeychain.swift in Sources */ = {isa = PBXBuildFil
 0FCCC38BC49143088E02DF51 /* VPMModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F16CDCF884477483E5127D /* VPMModels.swift */; };
 A97DCF2AA96145D28BF6D486 /* VPMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2784106CBD2247D9AC8B936F /* VPMError.swift */; };
 A13E111102834B0CBED3E146 /* VPMAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368A40B56C84202819C0C4B /* VPMAPIClient.swift */; };
+F24A6FC69B1E4C3F9B39F7A4 /* VPMAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784714AAF6D540E8BD970762 /* VPMAuthService.swift */; };
+1EACC82B41C041B3AD9D88A6 /* VPMLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989406E779624E2398FD0565 /* VPMLoginManager.swift */; };
+7316AFB3E0E348DE9C206FE7 /* VPMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEDE571E52F44078F5A62C6 /* VPMLoginViewController.swift */; };
+4F593EF402C84B21AA79EE63 /* VPMAccountWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F3ECFFF7A54D808BB03BF3 /* VPMAccountWindowController.swift */; };
 		492C4871210EF62E004554A0 /* ClashConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C4870210EF62E004554A0 /* ClashConfig.swift */; };
 		493A9F282453E60400D35296 /* ProxyDelayHistoryMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A9F272453E60400D35296 /* ProxyDelayHistoryMenu.swift */; };
 		493AEAE3221AE3420016FE98 /* AppVersionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493AEAE2221AE3420016FE98 /* AppVersionUtil.swift */; };
@@ -145,6 +149,10 @@ A13E111102834B0CBED3E146 /* VPMAPIClient.swift in Sources */ = {isa = PBXBuildFi
 F5F16CDCF884477483E5127D /* VPMModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMModels.swift; sourceTree = "<group>"; };
 2784106CBD2247D9AC8B936F /* VPMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMError.swift; sourceTree = "<group>"; };
 E368A40B56C84202819C0C4B /* VPMAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMAPIClient.swift; sourceTree = "<group>"; };
+784714AAF6D540E8BD970762 /* VPMAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMAuthService.swift; sourceTree = "<group>"; };
+989406E779624E2398FD0565 /* VPMLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMLoginManager.swift; sourceTree = "<group>"; };
+4AEDE571E52F44078F5A62C6 /* VPMLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMLoginViewController.swift; sourceTree = "<group>"; };
+79F3ECFFF7A54D808BB03BF3 /* VPMAccountWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMAccountWindowController.swift; sourceTree = "<group>"; };
 		4929F683258CE07500A435F6 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		492C4868210EE6B9004554A0 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		492C4870210EF62E004554A0 /* ClashConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashConfig.swift; sourceTree = "<group>"; };
@@ -325,6 +333,8 @@ E368A40B56C84202819C0C4B /* VPMAPIClient.swift */ = {isa = PBXFileReference; las
 				F5F16CDCF884477483E5127D /* VPMModels.swift */,
 				2784106CBD2247D9AC8B936F /* VPMError.swift */,
 				E368A40B56C84202819C0C4B /* VPMAPIClient.swift */,
+				989406E779624E2398FD0565 /* VPMLoginManager.swift */,
+				784714AAF6D540E8BD970762 /* VPMAuthService.swift */,
 			);
 			path = VPM;
 			sourceTree = "<group>";
@@ -415,6 +425,8 @@ E368A40B56C84202819C0C4B /* VPMAPIClient.swift */ = {isa = PBXFileReference; las
 				499976C721359F0400E7BF83 /* ClashWebViewContoller.swift */,
 				499A485322ED707300F6C675 /* RemoteConfigViewController.swift */,
 				499ADAFE2498FC6D00C488FE /* ExternalControlViewController.swift */,
+				4AEDE571E52F44078F5A62C6 /* VPMLoginViewController.swift */,
+				79F3ECFFF7A54D808BB03BF3 /* VPMAccountWindowController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -759,6 +771,10 @@ E368A40B56C84202819C0C4B /* VPMAPIClient.swift */ = {isa = PBXFileReference; las
 				0FCCC38BC49143088E02DF51 /* VPMModels.swift in Sources */,
 				A97DCF2AA96145D28BF6D486 /* VPMError.swift in Sources */,
 				A13E111102834B0CBED3E146 /* VPMAPIClient.swift in Sources */,
+				F24A6FC69B1E4C3F9B39F7A4 /* VPMAuthService.swift in Sources */,
+				1EACC82B41C041B3AD9D88A6 /* VPMLoginManager.swift in Sources */,
+				7316AFB3E0E348DE9C206FE7 /* VPMLoginViewController.swift in Sources */,
+				4F593EF402C84B21AA79EE63 /* VPMAccountWindowController.swift in Sources */,
 				49CF3B6520CEE06C001EBF94 /* ConfigManager.swift in Sources */,
 				F9E754D0239CC21F00CEE7CC /* WebPortalManager.swift in Sources */,
 				495BFB8821919B9800C8779D /* RemoteConfigManager.swift in Sources */,
