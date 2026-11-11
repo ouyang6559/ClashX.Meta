@@ -12,6 +12,8 @@
 		49228457270AADE20027A4B6 /* RemoteConfigUpdateIntervalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49228456270AADE20027A4B6 /* RemoteConfigUpdateIntervalSettingView.swift */; };
 		4929F610258CD22E00A435F6 /* menu_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4929F60F258CD22E00A435F6 /* menu_icon@2x.png */; };
 		4929F677258CD89B00A435F6 /* Country.mmdb.gz in Resources */ = {isa = PBXBuildFile; fileRef = 4929F676258CD89B00A435F6 /* Country.mmdb.gz */; };
+		4929F679258CD89B00A435F6 /* geosite.db.gz in Resources */ = {isa = PBXBuildFile; fileRef = 4929F67B258CD89B00A435F6 /* geosite.db.gz */; };
+		4929F678258CD89B00A435F6 /* geoip.db.gz in Resources */ = {isa = PBXBuildFile; fileRef = 4929F67A258CD89B00A435F6 /* geoip.db.gz */; };
 		4929F67F258CE04700A435F6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929F67E258CE04700A435F6 /* Settings.swift */; };
 		4929F684258CE07500A435F6 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929F683258CE07500A435F6 /* UserDefaultWrapper.swift */; };
 		492C4869210EE6B9004554A0 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C4868210EE6B9004554A0 /* ApiRequest.swift */; };
@@ -132,6 +134,8 @@
 		49228456270AADE20027A4B6 /* RemoteConfigUpdateIntervalSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigUpdateIntervalSettingView.swift; sourceTree = "<group>"; };
 		4929F60F258CD22E00A435F6 /* menu_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_icon@2x.png"; sourceTree = "<group>"; };
 		4929F676258CD89B00A435F6 /* Country.mmdb.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = Country.mmdb.gz; sourceTree = "<group>"; };
+		4929F67B258CD89B00A435F6 /* geosite.db.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = geosite.db.gz; sourceTree = "<group>"; };
+		4929F67A258CD89B00A435F6 /* geoip.db.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = geoip.db.gz; sourceTree = "<group>"; };
 		4929F67E258CE04700A435F6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		4929F683258CE07500A435F6 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		492C4868210EE6B9004554A0 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
@@ -375,6 +379,8 @@
 			isa = PBXGroup;
 			children = (
 				4929F676258CD89B00A435F6 /* Country.mmdb.gz */,
+				4929F67B258CD89B00A435F6 /* geosite.db.gz */,
+				4929F67A258CD89B00A435F6 /* geoip.db.gz */,
 				4929F60F258CD22E00A435F6 /* menu_icon@2x.png */,
 				49761DA621C9497000AE13EF /* dashboard */,
 				4989F98D20D0AE990001E564 /* sampleConfig.yaml */,
@@ -609,6 +615,8 @@
 			files = (
 				49761DA721C9497000AE13EF /* dashboard in Resources */,
 				4929F677258CD89B00A435F6 /* Country.mmdb.gz in Resources */,
+				4929F679258CD89B00A435F6 /* geosite.db.gz in Resources */,
+				4929F678258CD89B00A435F6 /* geoip.db.gz in Resources */,
 				4981C88B216BAE4A008CC14A /* Localizable.strings in Resources */,
 				8A2BBEA727A03ACB0081EBEF /* ProxySetting.sdef in Resources */,
 				F9FAB31E262BE04800DE02A6 /* Images.xcassets in Resources */,
