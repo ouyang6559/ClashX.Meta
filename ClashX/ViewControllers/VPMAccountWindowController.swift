@@ -39,9 +39,13 @@ class VPMAccountWindowController: NSWindowController, NSWindowDelegate {
 /// 已登录的账户视图（commit 6 扩展为权益/流量展示）。
 class VPMAccountViewController: NSViewController {
     private let emailLabel = NSTextField(labelWithString: VPMAuthService.displayEmail)
+    private let storeButton = NSButton(title: NSLocalizedString("vpm.store.buyPlan", comment: ""),
+                                       target: nil,
+                                       action: nil)
     private let logoutButton = NSButton(title: NSLocalizedString("vpm.account.logout", comment: ""),
                                         target: nil,
                                         action: nil)
+    private var storeWindowController: VPMStoreWindowController?
 
     override func loadView() {
         view = NSView(frame: NSRect(x: 0, y: 0, width: 400, height: 420))
@@ -53,8 +57,11 @@ class VPMAccountViewController: NSViewController {
         logoutButton.bezelStyle = .rounded
         logoutButton.target = self
         logoutButton.action = #selector(didTapLogout(_:))
+        storeButton.bezelStyle = .rounded
+        storeButton.target = self
+        storeButton.action = #selector(didTapStore(_:))
 
-        let stack = NSStackView(views: [emailLabel, logoutButton])
+        let stack = NSStackView(views: [emailLabel, storeButton, logoutButton])
         stack.orientation = .vertical
         stack.alignment = .leading
         stack.spacing = 16
@@ -66,7 +73,15 @@ class VPMAccountViewController: NSViewController {
         ])
     }
 
+    @objc private func didTapStore(_ sender: NSButton) {
+        if storeWindowController == nil {
+            storeWindowController = VPMStoreWindowController()
+        }
+        storeWindowController?.show()
+    }
+
     @objc private func didTapLogout(_ sender: NSButton) {
+        VPMStoreService.shared.stopPolling()
         VPMAuthService.logout()
         if let windowController = view.window?.windowController as? VPMAccountWindowController {
             windowController.reloadContent()

@@ -25,6 +25,8 @@ F24A6FC69B1E4C3F9B39F7A4 /* VPMAuthService.swift in Sources */ = {isa = PBXBuild
 1EACC82B41C041B3AD9D88A6 /* VPMLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989406E779624E2398FD0565 /* VPMLoginManager.swift */; };
 E1E6B5AB8ABE4C8191B44398 /* VPMOAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB0636C1B9747078D0CADC1 /* VPMOAuthService.swift */; };
 115F3EED0AA1459A9BFA9D22 /* VPMDeviceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B22ED1694B47EF9D38814B /* VPMDeviceService.swift */; };
+CEB4EED0A074462A95CDBC3F /* VPMStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE5AEC8B754A1882B87BDD /* VPMStoreService.swift */; };
+013225B929B5450882E207A1 /* VPMStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE6D4C834C84CE686C9DB49 /* VPMStoreViewController.swift */; };
 7316AFB3E0E348DE9C206FE7 /* VPMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEDE571E52F44078F5A62C6 /* VPMLoginViewController.swift */; };
 4F593EF402C84B21AA79EE63 /* VPMAccountWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F3ECFFF7A54D808BB03BF3 /* VPMAccountWindowController.swift */; };
 		492C4871210EF62E004554A0 /* ClashConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C4870210EF62E004554A0 /* ClashConfig.swift */; };
@@ -155,6 +157,8 @@ E368A40B56C84202819C0C4B /* VPMAPIClient.swift */ = {isa = PBXFileReference; las
 989406E779624E2398FD0565 /* VPMLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMLoginManager.swift; sourceTree = "<group>"; };
 0EB0636C1B9747078D0CADC1 /* VPMOAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMOAuthService.swift; sourceTree = "<group>"; };
 69B22ED1694B47EF9D38814B /* VPMDeviceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMDeviceService.swift; sourceTree = "<group>"; };
+0EDE5AEC8B754A1882B87BDD /* VPMStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMStoreService.swift; sourceTree = "<group>"; };
+DDE6D4C834C84CE686C9DB49 /* VPMStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMStoreViewController.swift; sourceTree = "<group>"; };
 4AEDE571E52F44078F5A62C6 /* VPMLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMLoginViewController.swift; sourceTree = "<group>"; };
 79F3ECFFF7A54D808BB03BF3 /* VPMAccountWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMAccountWindowController.swift; sourceTree = "<group>"; };
 		4929F683258CE07500A435F6 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@ E368A40B56C84202819C0C4B /* VPMAPIClient.swift */ = {isa = PBXFileReference; las
 				989406E779624E2398FD0565 /* VPMLoginManager.swift */,
 				0EB0636C1B9747078D0CADC1 /* VPMOAuthService.swift */,
 				69B22ED1694B47EF9D38814B /* VPMDeviceService.swift */,
+				0EDE5AEC8B754A1882B87BDD /* VPMStoreService.swift */,
 				784714AAF6D540E8BD970762 /* VPMAuthService.swift */,
 			);
 			path = VPM;
@@ -433,6 +438,7 @@ E368A40B56C84202819C0C4B /* VPMAPIClient.swift */ = {isa = PBXFileReference; las
 				499ADAFE2498FC6D00C488FE /* ExternalControlViewController.swift */,
 				4AEDE571E52F44078F5A62C6 /* VPMLoginViewController.swift */,
 				79F3ECFFF7A54D808BB03BF3 /* VPMAccountWindowController.swift */,
+				DDE6D4C834C84CE686C9DB49 /* VPMStoreViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -781,6 +787,8 @@ E368A40B56C84202819C0C4B /* VPMAPIClient.swift */ = {isa = PBXFileReference; las
 				1EACC82B41C041B3AD9D88A6 /* VPMLoginManager.swift in Sources */,
 				E1E6B5AB8ABE4C8191B44398 /* VPMOAuthService.swift in Sources */,
 				115F3EED0AA1459A9BFA9D22 /* VPMDeviceService.swift in Sources */,
+				CEB4EED0A074462A95CDBC3F /* VPMStoreService.swift in Sources */,
+				013225B929B5450882E207A1 /* VPMStoreViewController.swift in Sources */,
 				7316AFB3E0E348DE9C206FE7 /* VPMLoginViewController.swift in Sources */,
 				4F593EF402C84B21AA79EE63 /* VPMAccountWindowController.swift in Sources */,
 				49CF3B6520CEE06C001EBF94 /* ConfigManager.swift in Sources */,
