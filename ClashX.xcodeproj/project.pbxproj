@@ -17,6 +17,10 @@
 		4929F67F258CE04700A435F6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929F67E258CE04700A435F6 /* Settings.swift */; };
 		4929F684258CE07500A435F6 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4929F683258CE07500A435F6 /* UserDefaultWrapper.swift */; };
 		492C4869210EE6B9004554A0 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C4868210EE6B9004554A0 /* ApiRequest.swift */; };
+B426215BB40D458FB18365F6 /* VPMKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F207C2A321B4E4FB3EE8CF5 /* VPMKeychain.swift */; };
+0FCCC38BC49143088E02DF51 /* VPMModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F16CDCF884477483E5127D /* VPMModels.swift */; };
+A97DCF2AA96145D28BF6D486 /* VPMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2784106CBD2247D9AC8B936F /* VPMError.swift */; };
+A13E111102834B0CBED3E146 /* VPMAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E368A40B56C84202819C0C4B /* VPMAPIClient.swift */; };
 		492C4871210EF62E004554A0 /* ClashConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492C4870210EF62E004554A0 /* ClashConfig.swift */; };
 		493A9F282453E60400D35296 /* ProxyDelayHistoryMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493A9F272453E60400D35296 /* ProxyDelayHistoryMenu.swift */; };
 		493AEAE3221AE3420016FE98 /* AppVersionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493AEAE2221AE3420016FE98 /* AppVersionUtil.swift */; };
@@ -137,6 +141,10 @@
 		4929F67B258CD89B00A435F6 /* geosite.db.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = geosite.db.gz; sourceTree = "<group>"; };
 		4929F67A258CD89B00A435F6 /* geoip.db.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = geoip.db.gz; sourceTree = "<group>"; };
 		4929F67E258CE04700A435F6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+5F207C2A321B4E4FB3EE8CF5 /* VPMKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMKeychain.swift; sourceTree = "<group>"; };
+F5F16CDCF884477483E5127D /* VPMModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMModels.swift; sourceTree = "<group>"; };
+2784106CBD2247D9AC8B936F /* VPMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMError.swift; sourceTree = "<group>"; };
+E368A40B56C84202819C0C4B /* VPMAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMAPIClient.swift; sourceTree = "<group>"; };
 		4929F683258CE07500A435F6 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		492C4868210EE6B9004554A0 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		492C4870210EF62E004554A0 /* ClashConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashConfig.swift; sourceTree = "<group>"; };
@@ -310,10 +318,22 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		492C4866210EE69B004554A0 /* General */ = {
+		8531CF3A3A30489BA01BEF45 /* VPM */ = {
+			isa = PBXGroup;
+			children = (
+				5F207C2A321B4E4FB3EE8CF5 /* VPMKeychain.swift */,
+				F5F16CDCF884477483E5127D /* VPMModels.swift */,
+				2784106CBD2247D9AC8B936F /* VPMError.swift */,
+				E368A40B56C84202819C0C4B /* VPMAPIClient.swift */,
+			);
+			path = VPM;
+			sourceTree = "<group>";
+		};
+492C4866210EE69B004554A0 /* General */ = {
 			isa = PBXGroup;
 			children = (
 				491C250121BD561200AB5D44 /* Managers */,
+				8531CF3A3A30489BA01BEF45 /* VPM */,
 				491C250021BD55B900AB5D44 /* Utils */,
 				492C4868210EE6B9004554A0 /* ApiRequest.swift */,
 			);
@@ -735,6 +755,10 @@
 				493A9F282453E60400D35296 /* ProxyDelayHistoryMenu.swift in Sources */,
 				492C4871210EF62E004554A0 /* ClashConfig.swift in Sources */,
 				492C4869210EE6B9004554A0 /* ApiRequest.swift in Sources */,
+				B426215BB40D458FB18365F6 /* VPMKeychain.swift in Sources */,
+				0FCCC38BC49143088E02DF51 /* VPMModels.swift in Sources */,
+				A97DCF2AA96145D28BF6D486 /* VPMError.swift in Sources */,
+				A13E111102834B0CBED3E146 /* VPMAPIClient.swift in Sources */,
 				49CF3B6520CEE06C001EBF94 /* ConfigManager.swift in Sources */,
 				F9E754D0239CC21F00CEE7CC /* WebPortalManager.swift in Sources */,
 				495BFB8821919B9800C8779D /* RemoteConfigManager.swift in Sources */,

@@ -22,4 +22,14 @@ enum Settings {
     
     @UserDefault("configAutoUpdateInterval", defaultValue: 48*60*60)
     static var configAutoUpdateInterval:TimeInterval
+
+    // MARK: VPM 登录模式（默认关闭 = 免登录，现有逻辑不变）
+    @UserDefault("vpmLoginModeEnabled", defaultValue: false)
+    static var vpmLoginModeEnabled:Bool
+
+    @UserDefault("vpmAPIBaseURL", defaultValue: "http://127.0.0.1:7790")
+    static var vpmAPIBaseURL:String
+
+    @UserDefault("vpmDisplayEmail", defaultValue: "")
+    static var vpmDisplayEmail:String
 }
