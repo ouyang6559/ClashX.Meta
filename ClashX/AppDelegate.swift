@@ -935,6 +935,9 @@ extension AppDelegate {
             }
         } else if host == "update-config" {
           updateConfig()
+        } else if host == "vpm-auth" {
+            // VPM 第三方授权登录回调（clashx://vpm-auth?ticket=... 或 ?error=...）。
+            VPMOAuthService.shared.handleAuthCallbackURL(URL(string: url) ?? URL(fileURLWithPath: "/"))
         }
     }
 }

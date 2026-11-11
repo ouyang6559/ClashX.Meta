@@ -29,6 +29,11 @@ class VPMLoginViewController: NSViewController {
     private lazy var extraRow = makeRow(label: extraLabel, field: extraTextField, fixedFieldWidth: 140)
     private var sendCodeButton: NSButton?
 
+    private var oauthProviders: [VPMOAuthProvider] = []
+    private var telegramCode: String?
+    private var telegramPollTimer: Timer?
+    private let telegramStatusLabel = NSTextField(labelWithString: "")
+
     override func loadView() {
         view = NSView(frame: NSRect(x: 0, y: 0, width: 360, height: 320))
     }
@@ -37,7 +42,139 @@ class VPMLoginViewController: NSViewController {
         super.viewDidLoad()
         setupUI()
         switchMode(0)
+        loadOAuthProviders()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(oauthFailed),
+                                               name: .vpmOAuthFailed,
+                                               object: nil)
     }
+
+    private func loadOAuthProviders() {
+        VPMOAuthService.shared.fetchProviders { [weak self] providers in
+            guard let self = self else { return }
+            self.oauthProviders = providers
+            self.rebuildThirdPartyButtons()
+        }
+    }
+
+    private func rebuildThirdPartyButtons() {
+        thirdPartyContainer.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        var views: [NSView] = []
+        let providers = oauthProviders.filter { $0.enabled && $0.provider != "telegram" }
+        for provider in providers {
+            let button = NSButton(title: providerTitle(provider.provider),
+                                  target: self,
+                                  action: #selector(didTapOAuth(_:)))
+            button.bezelStyle = .rounded
+            button.identifier = NSUserInterfaceItemIdentifier(provider.provider)
+            views.append(button)
+        }
+        if oauthProviders.contains(where: { $0.provider == "telegram" && $0.enabled }) {
+            let tgButton = NSButton(title: NSLocalizedString("vpm.auth.telegramLogin", comment: ""),
+                                    target: self,
+                                    action: #selector(didTapTelegram(_:)))
+            tgButton.bezelStyle = .rounded
+            views.append(tgButton)
+        }
+        guard !views.isEmpty else { return }
+        views.forEach { thirdPartyContainer.addArrangedSubview($0) }
+        let hint = NSTextField(labelWithString: NSLocalizedString("vpm.auth.thirdPartyHint", comment: ""))
+        hint.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
+        thirdPartyContainer.addArrangedSubview(hint)
+    }
+
+    private func providerTitle(_ provider: String) -> String {
+        switch provider {
+        case "google": return NSLocalizedString("vpm.auth.googleLogin", comment: "")
+        case "x": return NSLocalizedString("vpm.auth.xLogin", comment: "")
+        default: return provider
+        }
+    }
+
+    @objc private func oauthFailed() {
+        telegramStatusLabel.stringValue = NSLocalizedString("vpm.auth.oauthFailed", comment: "")
+    }
+
+    @objc private func didTapOAuth(_ sender: NSButton) {
+        guard let provider = sender.identifier?.rawValue else { return }
+        telegramStatusLabel.stringValue = NSLocalizedString("vpm.auth.waitingProvider", comment: "")
+        VPMOAuthService.shared.startOAuth(provider: provider,
+                                          presentingWindow: view.window) { [weak self] error in
+            self?.telegramStatusLabel.stringValue = error ?? ""
+        }
+    }
+
+    @objc private func didTapTelegram(_ sender: NSButton) {
+        setBusy(true)
+        VPMOAuthService.shared.telegramLoginStart { [weak self] result in
+            guard let self = self else { return }
+            self.setBusy(false)
+            switch result {
+            case let .success(resp):
+                self.showTelegramPanel(resp)
+            case let .failure(error):
+                self.telegramStatusLabel.stringValue = error.displayMessage
+            }
+        }
+    }
+
+    private func showTelegramPanel(_ resp: VPMTGLoginStartResponse) {
+        telegramCode = resp.code
+        telegramStartURL = resp.startUrl
+        telegramStatusLabel.stringValue = String(format: NSLocalizedString("vpm.auth.telegramCodePrompt", comment: ""),
+                                                 resp.botUsername, resp.code)
+        let openButton = NSButton(title: NSLocalizedString("vpm.auth.openTelegram", comment: ""),
+                                  target: self,
+                                  action: #selector(didTapOpenTelegram(_:)))
+        openButton.bezelStyle = .rounded
+        thirdPartyContainer.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        thirdPartyContainer.addArrangedSubview(openButton)
+        startTelegramPolling(code: resp.code)
+    }
+
+    @objc private func didTapOpenTelegram(_ sender: NSButton) {
+        guard let startURL = telegramStartURL, let url = URL(string: startURL) else { return }
+        NSWorkspace.shared.open(url)
+    }
+
+    private var telegramStartURL: String?
+
+    private func startTelegramPolling(code: String) {
+        telegramPollTimer?.invalidate()
+        telegramPollTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                return
+            }
+            VPMOAuthService.shared.telegramLoginStatus(code: code) { result in
+                switch result {
+                case let .success(resp):
+                    switch resp.status {
+                    case "VERIFIED":
+                        timer.invalidate()
+                        VPMAuthService.storeSession(accessToken: resp.accessToken, email: nil)
+                    case "UNBOUND":
+                        timer.invalidate()
+                        self.telegramStatusLabel.stringValue = NSLocalizedString("vpm.auth.telegramUnbound", comment: "")
+                    case "EXPIRED":
+                        timer.invalidate()
+                        self.telegramStatusLabel.stringValue = NSLocalizedString("vpm.auth.telegramExpired", comment: "")
+                    default:
+                        break // PENDING
+                    }
+                case let .failure(error):
+                    timer.invalidate()
+                    self.telegramStatusLabel.stringValue = error.displayMessage
+                }
+            }
+        }
+    }
+
+    deinit {
+        telegramPollTimer?.invalidate()
+        NotificationCenter.default.removeObserver(self)
+    }
+
 
     private func makeRow(label: NSTextField, field: NSTextField, fixedFieldWidth: CGFloat) -> NSStackView {
         field.widthAnchor.constraint(equalToConstant: fixedFieldWidth).isActive = true
@@ -68,6 +205,10 @@ class VPMLoginViewController: NSViewController {
         thirdPartyContainer.spacing = 8
         thirdPartyContainer.alignment = .centerY
 
+        telegramStatusLabel.textColor = .secondaryLabelColor
+        telegramStatusLabel.lineBreakMode = .byWordWrapping
+        telegramStatusLabel.maximumNumberOfLines = 4
+
         modeSegment.target = self
         modeSegment.action = #selector(didChangeMode(_:))
 
@@ -79,7 +220,7 @@ class VPMLoginViewController: NSViewController {
         buttonRow.orientation = .horizontal
         buttonRow.spacing = 12
 
-        let rootStack = NSStackView(views: [modeSegment, formStack, buttonRow, statusLabel, thirdPartyContainer])
+        let rootStack = NSStackView(views: [modeSegment, formStack, buttonRow, statusLabel, thirdPartyContainer, telegramStatusLabel])
         rootStack.orientation = .vertical
         rootStack.alignment = .leading
         rootStack.spacing = 14
